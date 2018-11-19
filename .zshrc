@@ -24,6 +24,7 @@ jdk
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
+# ZSH_THEME="xxf"
 ZSH_THEME="robbyrussell"
 # ZSH_THEME="crunch"
 
@@ -127,6 +128,7 @@ alias tmux="TERM=screen-256color-bce tmux"
 alias lf-issues="jira issue ls --project LF --assignee ALL | less"
 alias my-lf-issues="jira issue ls --project LF --assignee kc.nabua | less"
 alias assign-issue="assignIssue"
+alias brainbox="cd ~/Sandbox/brainbox/brainboxrecode/"
 
 #terjira library functions
 function assignIssue() {
@@ -135,7 +137,7 @@ function assignIssue() {
 
 # alias vim="TERM=xterm-256color vim"
 
-# export TERM=xterm-256color
+export TERM=xterm-256color
 # setting that set the terminal to vim mode editing rather than emac
 # bindkey -v
 #
