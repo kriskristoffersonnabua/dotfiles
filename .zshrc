@@ -26,7 +26,6 @@ jdk
 
 # ZSH_THEME="xxf"
 ZSH_THEME="robbyrussell"
-# ZSH_THEME="crunch"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -79,6 +78,8 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+	zsh-autosuggestions
+	zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -115,11 +116,13 @@ source $ZSH/oh-my-zsh.sh
 alias lfserver="meteor run --settings config/development/settings.json"
 alias lfsource="cd ~/Sandbox/gap/lf-main"
 alias sandbox="cd ~/Sandbox"
+alias gap="cd ~/Sandbox/gap"
 alias youtube_downloader="youtube-dl --no-check-certificate --force-ipv4"
 alias manga_downloader='python /Users/foxhole/Downloads/Manga\ Downloader/src/manga.py '
 alias startLFDevelopment="lfsource;lfserver;"
 alias lfapi="cd ~/Sandbox/gap/lastfarewells-api"
 alias lfclient="cd ~/Sandbox/gap/lastfarewells-client"
+alias lfadmin="cd ~/Sandbox/gap/lastfarewells-admin"
 alias tysclient="cd ~/Sandbox/gap/thankyouspot"
 alias tysapi="cd ~/Sandbox/gap/thankyouspot-backend"
 alias removedsstore="find ./ -name '.DS_Store' -delete"
@@ -129,6 +132,8 @@ alias lf-issues="jira issue ls --project LF --assignee ALL | less"
 alias my-lf-issues="jira issue ls --project LF --assignee kc.nabua | less"
 alias assign-issue="assignIssue"
 alias brainbox="cd ~/Sandbox/brainbox/brainboxrecode/"
+alias brainboxadmin="cd ~/Sandbox/brainbox/brainboxadmin/"
+alias mysql="/usr/local/mysql/bin/mysql"
 
 #terjira library functions
 function assignIssue() {
