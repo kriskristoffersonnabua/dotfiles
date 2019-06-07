@@ -25,7 +25,9 @@ jdk
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
 # ZSH_THEME="xxf"
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
+# ZSH_THEME="eastwood"
+ZSH_THEME="mortalscumbag"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -126,7 +128,7 @@ alias lfadmin="cd ~/Sandbox/gap/lastfarewells-admin"
 alias tysclient="cd ~/Sandbox/gap/thankyouspot"
 alias tysapi="cd ~/Sandbox/gap/thankyouspot-backend"
 alias removedsstore="find ./ -name '.DS_Store' -delete"
-alias andemu="~/Library/Android/sdk/emulator/emulator -avd Nexus_5X_API_25"
+alias andemu="~/Library/Android/sdk/emulator/emulator -avd nexus"
 alias tmux="TERM=screen-256color-bce tmux"
 alias lf-issues="jira issue ls --project LF --assignee ALL | less"
 alias my-lf-issues="jira issue ls --project LF --assignee kc.nabua | less"
