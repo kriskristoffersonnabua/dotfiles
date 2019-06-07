@@ -71,7 +71,7 @@ nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gp :Gpush<CR>
 
 "plugins sections
-call plug#begin('~/dotfiles/vim/plugged')
+call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'jiangmiao/auto-pairs'
 
