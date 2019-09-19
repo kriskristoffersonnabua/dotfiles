@@ -1,10 +1,13 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/Library/Android/sdk/emulator:$HOME/Library/Android/sdk/tools/bin:$PATH
 
 export ANDROID_HOME=$HOME/Library/Android/sdk
+export ANDROID_SDK_ROOT=$ANDROID_HOME
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=/usr/local/sbin:$PATH
+export JAVA_HOME=`/usr/libexec/java_home -v 1.$1`; 
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/foxhole/.oh-my-zsh
@@ -12,22 +15,21 @@ export ZSH=/Users/foxhole/.oh-my-zsh
 #list available jdks
 alias jdks="/usr/libexec/java_home -V"
 # jdk version switching - e.g. `jdk 6` will switch to version 1.6
-function jdk() { 
+# function jdk() { 
   # echo "Switching java version"; 
-  echo "Hello $(whoami), today's thought is...\n $(fortune)"
-  export JAVA_HOME=`/usr/libexec/java_home -v 1.$1`; 
+  # echo "Hello $(whoami), today's thought is...\n $(fortune)"
   # java -version; 
-}
-jdk
+# }
+# jdk
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
 # ZSH_THEME="xxf"
-# ZSH_THEME="robbyrussell"
+ZSH_THEME="robbyrussell"
 # ZSH_THEME="eastwood"
-ZSH_THEME="mortalscumbag"
+# ZSH_THEME="mortalscumbag"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -115,41 +117,22 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias ls="ls -lap"
-alias lfserver="meteor run --settings config/development/settings.json"
-alias lfsource="cd ~/Sandbox/gap/lf-main"
 alias sandbox="cd ~/Sandbox"
 alias gap="cd ~/Sandbox/gap"
 alias youtube_downloader="youtube-dl --no-check-certificate --force-ipv4"
-alias manga_downloader='python /Users/foxhole/Downloads/Manga\ Downloader/src/manga.py '
-alias startLFDevelopment="lfsource;lfserver;"
-alias lfapi="cd ~/Sandbox/gap/lastfarewells-api"
-alias lfclient="cd ~/Sandbox/gap/lastfarewells-client"
-alias lfadmin="cd ~/Sandbox/gap/lastfarewells-admin"
-alias tysclient="cd ~/Sandbox/gap/thankyouspot"
-alias tysapi="cd ~/Sandbox/gap/thankyouspot-backend"
 alias removedsstore="find ./ -name '.DS_Store' -delete"
-alias andemu="~/Library/Android/sdk/emulator/emulator -avd nexus"
+# alias andemu="~/Library/Android/sdk/emulator/emulator -avd nexus"
 alias tmux="TERM=screen-256color-bce tmux"
-alias lf-issues="jira issue ls --project LF --assignee ALL | less"
-alias my-lf-issues="jira issue ls --project LF --assignee kc.nabua | less"
-alias assign-issue="assignIssue"
-alias brainbox="cd ~/Sandbox/brainbox/brainboxrecode/"
-alias brainboxadmin="cd ~/Sandbox/brainbox/brainboxadmin/"
 alias mysql="/usr/local/mysql/bin/mysql"
-
-#terjira library functions
-function assignIssue() {
-    jira issue assign "$1" "$2"
-}
+alias ls="ls -laG"
+alias brainbox="cd ~/Sandbox/brainbox/brainbox_center && tmux new -s brainbox"
+alias lfc="cd ~/Sandbox/gap/lastfarewells-client"
+alias lfa="cd ~/Sandbox/gap/lastfarewells-api"
+alias lfclient="lfc && tmux new -s client"
+alias lfapi="lfa && tmux new -s api"
 
 # alias vim="TERM=xterm-256color vim"
 
 export TERM=xterm-256color
 # setting that set the terminal to vim mode editing rather than emac
 # bindkey -v
-#
-# if which tmux 2>&1 >/dev/null; then
-#   if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ]; then
-#     (tmux a \; new-window) || tmux new -s term;
-#   fi
-# fi

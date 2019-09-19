@@ -34,6 +34,9 @@ set tabstop=2
 set shiftwidth=2
 set noexpandtab
 
+"set window view height
+set previewheight=20
+
 "custom map keys
 let mapleader= ";"
 nnoremap <Up> <NOP>
@@ -65,7 +68,7 @@ imap ; ;
 "fugitive plugin mapping
 set diffopt+=vertical
 nnoremap <leader>gd :Gdiff<CR>
-nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gs :Gstatus<CR><C-w>10-
 nnoremap <leader>gi :Gwrite<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gp :Gpush<CR>
@@ -97,6 +100,7 @@ Plug 'alvan/vim-closetag'
 "colorscheme
 Plug 'srcery-colors/srcery-vim'
 Plug 'morhetz/gruvbox'
+Plug 'NLKNguyen/papercolor-theme'
 
 "snippets
 Plug 'SirVer/ultisnips'
@@ -108,19 +112,21 @@ Plug 'ap/vim-css-color'
 Plug 'Valloric/YouCompleteMe'
 Plug 'airblade/vim-gitgutter'
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}           
+"typescript
+Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 "functions
 function! VimInit()
 		"set colorscheme here
-		set background=dark " or light if you prefer the light version
+		set background=dark " dark or light if you prefer the light version
 		if !has('gui_running')
 			set t_Co=256
 		endif
 
-		colo srcery
+		colo PaperColor
 		"custom colors
-		highlight SpecialKey ctermfg=7 guifg=grey70
+		" highlight SpecialKey ctermfg=7 guifg=grey70
 
 		fixdel
     if 0 == argc()
