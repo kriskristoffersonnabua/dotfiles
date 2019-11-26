@@ -9,6 +9,9 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=/usr/local/sbin:$PATH
 export JAVA_HOME=`/usr/libexec/java_home -v 1.$1`; 
 
+#php composer directory
+export PATH=$PATH:$HOME/.composer/vendor/bin
+
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/foxhole/.oh-my-zsh
 # export JAVA_HOME=”$(/usr/libexec/java_home)”
@@ -26,6 +29,7 @@ alias jdks="/usr/libexec/java_home -V"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
+# ZSH_THEME="oxide"
 # ZSH_THEME="xxf"
 ZSH_THEME="robbyrussell"
 # ZSH_THEME="eastwood"
@@ -93,7 +97,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -128,11 +132,19 @@ alias ls="ls -laG"
 alias brainbox="cd ~/Sandbox/brainbox/brainbox_center && tmux new -s brainbox"
 alias lfc="cd ~/Sandbox/gap/lastfarewells-client"
 alias lfa="cd ~/Sandbox/gap/lastfarewells-api"
-alias lfclient="lfc && tmux new -s client"
-alias lfapi="lfa && tmux new -s api"
+alias lfs="cd ~/Sandbox/gap/queuesandbox/LFCron"
+alias lfclient="lfc && tmux new -s LF\[Client\]"
+alias lfadmin="cd ~/Sandbox/gap/lastfarewells-admin && tmux new -s LF\[Admin\]"
+alias lfapi="lfa && tmux new -s LF\[API\]"
+alias lfserver="lfs && tmux new -s LF\[CRON\ Server\]"
+
+#php
+alias composer="~/bin/composer.phar"
 
 # alias vim="TERM=xterm-256color vim"
 
 export TERM=xterm-256color
 # setting that set the terminal to vim mode editing rather than emac
 # bindkey -v
+
+unsetopt PROMPT_SP

@@ -1,13 +1,14 @@
-syntax on
 filetype plugin indent on
+syntax on
 set nocompatible
 set noswapfile
 " set noshowmode
 set encoding=UTF-8
 set number
-set ruler
+" set ruler
 " set relativenumber
 set splitbelow
+set splitright
 set backspace=indent,eol,start
 set cursorline
 set laststatus=2
@@ -30,12 +31,12 @@ set lcs+=space:·
 set ignorecase
 
 set smartindent
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set noexpandtab
 
 "set window view height
-set previewheight=20
+set previewheight=10
 
 "custom map keys
 let mapleader= ";"
@@ -62,13 +63,14 @@ nnoremap <leader>t :Texplore<CR>
 nnoremap <leader><space> :Dash<CR>
 nnoremap <leader>e :Explore<CR>
 nnoremap <leader>j <C-w>
+nnoremap <leader>1 :NERDTreeToggle<CR>
 nnoremap <leader>z :CtrlPNotes<CR>
 vnoremap // y/<C-R>"<CR>
 imap ; ;
 "fugitive plugin mapping
 set diffopt+=vertical
 nnoremap <leader>gd :Gdiff<CR>
-nnoremap <leader>gs :Gstatus<CR><C-w>10-
+nnoremap <leader>gs :20Gstatus<CR><C-w>10-
 nnoremap <leader>gi :Gwrite<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gp :Gpush<CR>
@@ -80,7 +82,10 @@ Plug 'jiangmiao/auto-pairs'
 
 "search plugins
 Plug 'kien/ctrlp.vim'
+Plug 'rking/ag.vim'
+Plug 'skwp/greplace.vim'
 
+Plug 'christoomey/vim-conflicted'
 Plug 'tpope/vim-surround'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-vinegar'
@@ -97,17 +102,30 @@ Plug 'prettier/vim-prettier', {
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
 Plug 'alvan/vim-closetag'
 
+"php plugins
+Plug 'stephpy/vim-php-cs-fixer'
+Plug 'tobyS/vmustache'
+Plug 'tobyS/pdv'
+
 "colorscheme
 Plug 'srcery-colors/srcery-vim'
 Plug 'morhetz/gruvbox'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'altercation/vim-colors-solarized'
+Plug 'sainnhe/gruvbox-material'
+Plug 'sjl/badwolf'
+Plug 'nightsense/seagrey'
+Plug 'gosukiwi/vim-atom-dark'
 
 "snippets
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'mattn/emmet-vim'
 Plug 'tellijo/vim-react-native-snippets'
 
 "productivity
+Plug 'scrooloose/nerdtree'
+Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-css-color'
 Plug 'Valloric/YouCompleteMe'
 Plug 'airblade/vim-gitgutter'
@@ -124,9 +142,17 @@ function! VimInit()
 			set t_Co=256
 		endif
 
-		colo PaperColor
+		colo atom-dark-256
+		" colo badwolf
+		" colo solarized
+		" colo gruvbox-material
+		" colo srcery
+		" colo PaperColor
+		" colo BlackSea
 		"custom colors
 		" highlight SpecialKey ctermfg=7 guifg=grey70
+		hi VertSplit ctermfg=bg ctermbg=bg
+		hi LineNr ctermbg=bg
 
 		fixdel
     if 0 == argc()
@@ -182,6 +208,10 @@ let g:indentLine_enabled = 1
 "ctrlp
 "ignore node_modules, DS_Store and git folder from searching
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|android\|ios\'
+let g:ctrlp_match_window = 'max:5,min:2'
+
+"git gutter settings
+let g:gitgutter_enabled = 0
 
 cabbrev lvim
       \ lvim /\<lt><C-R><C-W>\>/gj
@@ -190,3 +220,23 @@ cabbrev lvim
       \ <C-Left><C-Left><C-Left>
 
 let g:ctrlp_extensions = ['notes']
+
+"badwolf colorscheme
+let g:badwolf_darkgutter = 1
+
+"NerdTree configurations
+let NERDTreeHijackNetrw = 0
+
+"emmet
+" let g:user_emmet_leader_key='<C-Q>'
+
+"Greplace
+set grepprg=ag
+let g:grep_cmd_opts = '--line-numbers --noheading'
+
+"php: auto format fixer settings
+nnoremap <silent><leader>pf :call PhpCsFixerFixFile()<CR>
+" autocmd BufWritePre *.php :call PhpCsFixerFixFile()<CR>
+"pdv: php documentation plugin
+let g:pdv_template_dir = $HOME ."/.vim/plugged/pdv/templates_snip"
+nnoremap <leader>pd :call pdv#DocumentWithSnip()<CR>
