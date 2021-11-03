@@ -4,7 +4,8 @@ set nocompatible
 set noswapfile
 " set noshowmode
 set encoding=UTF-8
-set number
+" set number
+set mouse=a
 " set ruler
 " set relativenumber
 set splitbelow
@@ -31,8 +32,8 @@ set lcs+=space:·
 set ignorecase
 
 set smartindent
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set noexpandtab
 
 "set window view height
@@ -74,6 +75,7 @@ nnoremap <leader>gs :20Gstatus<CR><C-w>10-
 nnoremap <leader>gi :Gwrite<CR>
 nnoremap <leader>gc :Gcommit<CR>
 nnoremap <leader>gp :Gpush<CR>
+" nnoremap <silent> K :call CocAction('doHover')<CR>
 
 "plugins sections
 call plug#begin('~/.vim/plugged')
@@ -96,7 +98,7 @@ Plug 'rizzatti/dash.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'jparise/vim-graphql'
 Plug 'pangloss/vim-javascript'
-Plug 'tomtom/tlib_vim'
+" Plug 'tomtom/tlib_vim'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
@@ -109,13 +111,8 @@ Plug 'tobyS/pdv'
 
 "colorscheme
 Plug 'srcery-colors/srcery-vim'
-Plug 'morhetz/gruvbox'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'altercation/vim-colors-solarized'
-Plug 'sainnhe/gruvbox-material'
-Plug 'sjl/badwolf'
-Plug 'nightsense/seagrey'
-Plug 'gosukiwi/vim-atom-dark'
+Plug 'ErichDonGubler/vim-sublime-monokai'
+Plug 'jacoborus/tender.vim'
 
 "snippets
 Plug 'SirVer/ultisnips'
@@ -124,6 +121,7 @@ Plug 'mattn/emmet-vim'
 Plug 'tellijo/vim-react-native-snippets'
 
 "productivity
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-css-color'
@@ -138,19 +136,16 @@ call plug#end()
 function! VimInit()
 		"set colorscheme here
 		set background=dark " dark or light if you prefer the light version
-		if !has('gui_running')
+		if (has("termguicolors"))
+			set termguicolors
+		endif
+		if has('gui_running')
 			set t_Co=256
 		endif
 
-		colo atom-dark-256
-		" colo badwolf
-		" colo solarized
-		" colo gruvbox-material
-		" colo srcery
-		" colo PaperColor
-		" colo BlackSea
-		"custom colors
-		" highlight SpecialKey ctermfg=7 guifg=grey70
+		colo tender
+		let g:sublimemonokai_term_italic = 1
+
 		hi VertSplit ctermfg=bg ctermbg=bg
 		hi LineNr ctermbg=bg
 
@@ -167,7 +162,7 @@ autocmd VimEnter * call VimInit()
 
 " Python environment setup
 let g:python2_host_prog = '/usr/local/bin/python2'
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python3_host_prog = '/usr/local/bin/python3.9'
 
 " vim move
 let g:move_key_modifier = 'C'

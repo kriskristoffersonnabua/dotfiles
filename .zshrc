@@ -1,19 +1,14 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/Library/Android/sdk/emulator:$HOME/Library/Android/sdk/tools/bin:$PATH
 
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export ANDROID_SDK_ROOT=$ANDROID_HOME
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=/usr/local/sbin:$PATH
+export PATH=/Users/vulcan/bin:$PATH
 export JAVA_HOME=`/usr/libexec/java_home -v 1.$1`; 
 
 #php composer directory
-export PATH=$PATH:$HOME/.composer/vendor/bin
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/foxhole/.oh-my-zsh
+export ZSH=/Users/vulcan/.oh-my-zsh
 # export JAVA_HOME=”$(/usr/libexec/java_home)”
 #list available jdks
 alias jdks="/usr/libexec/java_home -V"
@@ -122,24 +117,13 @@ export LANG=en_US.UTF-8
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias ls="ls -lap"
 alias sandbox="cd ~/Sandbox"
-alias gap="cd ~/Sandbox/gap"
-alias youtube_downloader="youtube-dl --no-check-certificate --force-ipv4"
 alias removedsstore="find ./ -name '.DS_Store' -delete"
+alias pronexis="cd /Users/vulcan/sandbox/pronexis/newpronexis"
 # alias andemu="~/Library/Android/sdk/emulator/emulator -avd nexus"
-alias tmux="TERM=screen-256color-bce tmux"
-alias mysql="/usr/local/mysql/bin/mysql"
 alias ls="ls -laG"
-alias brainbox="cd ~/Sandbox/brainbox/brainbox_center && tmux new -s brainbox"
-alias lfc="cd ~/Sandbox/gap/lastfarewells-client"
-alias lfa="cd ~/Sandbox/gap/lastfarewells-api"
-alias lfs="cd ~/Sandbox/gap/queuesandbox/LFCron"
-alias lfclient="lfc && tmux new -s LF\[Client\]"
-alias lfadmin="cd ~/Sandbox/gap/lastfarewells-admin && tmux new -s LF\[Admin\]"
-alias lfapi="lfa && tmux new -s LF\[API\]"
-alias lfserver="lfs && tmux new -s LF\[CRON\ Server\]"
 
 #php
-alias composer="~/bin/composer.phar"
+export PATH=$PATH:$HOME/.composer/vendor/bin
 
 # alias vim="TERM=xterm-256color vim"
 
