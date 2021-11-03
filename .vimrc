@@ -143,7 +143,7 @@ function! VimInit()
 			set t_Co=256
 		endif
 
-		colo tender
+		colo srcery
 		let g:sublimemonokai_term_italic = 1
 
 		hi VertSplit ctermfg=bg ctermbg=bg

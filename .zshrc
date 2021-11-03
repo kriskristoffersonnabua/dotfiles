@@ -2,16 +2,16 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 export PATH=/usr/local/sbin:$PATH
-export PATH=/Users/vulcan/bin:$PATH
-export JAVA_HOME=`/usr/libexec/java_home -v 1.$1`; 
+# export PATH=/Users/vulcan/bin:$PATH
+# export JAVA_HOME=`/usr/libexec/java_home -v 1.$1`; 
 
 #php composer directory
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/vulcan/.oh-my-zsh
+export ZSH=/Users/incognito/.oh-my-zsh
 # export JAVA_HOME=”$(/usr/libexec/java_home)”
 #list available jdks
-alias jdks="/usr/libexec/java_home -V"
+# alias jdks="/usr/libexec/java_home -V"
 # jdk version switching - e.g. `jdk 6` will switch to version 1.6
 # function jdk() { 
   # echo "Switching java version"; 
@@ -118,14 +118,14 @@ export LANG=en_US.UTF-8
 # alias ls="ls -lap"
 alias sandbox="cd ~/Sandbox"
 alias removedsstore="find ./ -name '.DS_Store' -delete"
-alias pronexis="cd /Users/vulcan/sandbox/pronexis/newpronexis"
+alias pronexis="cd /Users/incognito/sandbox/pronexis/newpronexis"
 # alias andemu="~/Library/Android/sdk/emulator/emulator -avd nexus"
 alias ls="ls -laG"
 
 #php
 export PATH=$PATH:$HOME/.composer/vendor/bin
 
-# alias vim="TERM=xterm-256color vim"
+alias vim="TERM=xterm-256color /opt/homebrew/opt/vim/bin/vim"
 
 export TERM=xterm-256color
 # setting that set the terminal to vim mode editing rather than emac
