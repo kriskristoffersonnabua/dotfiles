@@ -1,0 +1,15 @@
+-- require'nvim-tree'.setup {
+--   disable_netrw = false,
+--   diagnostics   = {
+--     enable = true
+--   },
+--   open_on_tab = false,
+--   open_on_setup = false,
+--   renderer = {
+--     add_trailing = false
+--   },
+--   diagnostics = {
+--     enable = true,
+--     show_on_dirs = true
+--   }
+-- }

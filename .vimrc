@@ -70,17 +70,23 @@ vnoremap // y/<C-R>"<CR>
 imap ; ;
 "fugitive plugin mapping
 set diffopt+=vertical
-nnoremap <leader>gd :Gdiff<CR>
-nnoremap <leader>gs :20Gstatus<CR><C-w>10-
+nnoremap <leader>gd :Git diff<CR>
+nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gi :Gwrite<CR>
-nnoremap <leader>gc :Gcommit<CR>
-nnoremap <leader>gp :Gpush<CR>
+nnoremap <leader>gc :Git commit<CR>
+nnoremap <leader>gp :Git push<CR>
 " nnoremap <silent> K :call CocAction('doHover')<CR>
 
 "plugins sections
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'jiangmiao/auto-pairs'
+
+"LSP 
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 "search plugins
 Plug 'kien/ctrlp.vim'
@@ -98,11 +104,12 @@ Plug 'rizzatti/dash.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'jparise/vim-graphql'
 Plug 'pangloss/vim-javascript'
-" Plug 'tomtom/tlib_vim'
+Plug 'tomtom/tlib_vim'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
 Plug 'alvan/vim-closetag'
+Plug 'vim-scripts/rename.vim'
 
 "php plugins
 Plug 'stephpy/vim-php-cs-fixer'
@@ -110,22 +117,25 @@ Plug 'tobyS/vmustache'
 Plug 'tobyS/pdv'
 
 "colorscheme
+Plug 'crusoexia/vim-monokai'
+Plug 'jsit/toast.vim'
+Plug 'sjl/badwolf'
 Plug 'srcery-colors/srcery-vim'
-Plug 'ErichDonGubler/vim-sublime-monokai'
-Plug 'jacoborus/tender.vim'
+Plug 'NLKNguyen/papercolor-theme'
 
 "snippets
 Plug 'SirVer/ultisnips'
+Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'honza/vim-snippets'
 Plug 'mattn/emmet-vim'
 Plug 'tellijo/vim-react-native-snippets'
 
 "productivity
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'ap/vim-css-color'
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 Plug 'airblade/vim-gitgutter'
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}           
 "typescript
@@ -134,20 +144,15 @@ call plug#end()
 
 "functions
 function! VimInit()
-		"set colorscheme here
-		set background=dark " dark or light if you prefer the light version
-		if (has("termguicolors"))
+		if exists('+termguicolors')
+			let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+			let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 			set termguicolors
 		endif
-		if has('gui_running')
-			set t_Co=256
-		endif
+		" set t_Co=256
+		set background=dark
 
-		colo srcery
-		let g:sublimemonokai_term_italic = 1
-
-		hi VertSplit ctermfg=bg ctermbg=bg
-		hi LineNr ctermbg=bg
+		colo toast
 
 		fixdel
     if 0 == argc()
@@ -173,9 +178,9 @@ let g:prettier#autoformat = 0
 let g:prettier#config#semi = 'false'
 let g:prettier#config#tab_width = 2
 let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#use_tabs = 'true'
+let g:prettier#config#use_tabs = 'false'
 let g:prettier#config#trailing_comma = 'none'
-let g:prettier#config#single_quote = 'true'
+let g:prettier#config#single_quote = 'false'
 let g:prettier#bracket_spacing = 'true'
 let g:prettier#config#print_width = 80
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
@@ -206,7 +211,7 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|android\|ios\'
 let g:ctrlp_match_window = 'max:5,min:2'
 
 "git gutter settings
-let g:gitgutter_enabled = 0
+let g:gitgutter_enabled = 1
 
 cabbrev lvim
       \ lvim /\<lt><C-R><C-W>\>/gj
@@ -215,9 +220,6 @@ cabbrev lvim
       \ <C-Left><C-Left><C-Left>
 
 let g:ctrlp_extensions = ['notes']
-
-"badwolf colorscheme
-let g:badwolf_darkgutter = 1
 
 "NerdTree configurations
 let NERDTreeHijackNetrw = 0

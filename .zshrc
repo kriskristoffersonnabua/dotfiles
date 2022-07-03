@@ -1,5 +1,13 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=/opt/homebrew/opt/mysql@5.7/bin:$PATH
 
 export PATH=/usr/local/sbin:$PATH
 # export PATH=/Users/vulcan/bin:$PATH
@@ -121,14 +129,21 @@ alias removedsstore="find ./ -name '.DS_Store' -delete"
 alias pronexis="cd /Users/incognito/sandbox/pronexis/newpronexis"
 # alias andemu="~/Library/Android/sdk/emulator/emulator -avd nexus"
 alias ls="ls -laG"
+alias standup="git-standup -d 6 -a 'Kris Kristofferson Nabua'"
+alias tmux='TERM=screen-256color tmux -2'
 
 #php
 export PATH=$PATH:$HOME/.composer/vendor/bin
 
 alias vim="TERM=xterm-256color /opt/homebrew/opt/vim/bin/vim"
+alias e='nvim'
 
 export TERM=xterm-256color
 # setting that set the terminal to vim mode editing rather than emac
 # bindkey -v
 
 unsetopt PROMPT_SP
+source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
